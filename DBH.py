@@ -25,11 +25,13 @@ def table_generator(value: str, type:str, to_type:str):
     if type == DECIMAL:
         value = int(value)
         if to_type == BINARY:
-            table.field_names = ["conversion", "value", "remainder"]
+            table.field_names = ["Step", "Conversion", "Value", "Remainder"]
+            step = 1
             while value > 0:
                 quotient = int(value/2)
-                table.add_row([f"{value}/2", quotient, 1 if value % 2 != 0 else 0])
-                value = quotient        
+                table.add_row([step, f"{value}/2", quotient, 1 if value % 2 != 0 else 0])
+                value = quotient      
+                step += 1  
     print(f"{table}\n")
 
 if __name__ == "__main__":
