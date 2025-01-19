@@ -62,7 +62,19 @@ def table_generator(value: str, type:str, to_type:str):
                 table.add_row([step, f"{value}/16", quotient, remainder])
                 value = quotient      
                 step += 1 
-    # if type == BINARY:
+    if type == BINARY:
+        if to_type == DECIMAL:
+            table.field_names = ["step", "Binary Position", "Digit", "Sum"]
+            step: int = 1
+            total: int = 0
+            value = value[::-1]
+            for x in range(len(value)-1, -1, -1):
+                sum = 2**x * int(value[x])
+                table.add_row([step, f"2^{x}", value[x], sum])
+                total = total + sum
+                step += 1
+            table.add_row(["--","--","Total", total])
+           
         
              
     print(f"{table}\n")

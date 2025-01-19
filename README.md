@@ -6,7 +6,8 @@ A Decimal, Binary, and Hexadecimal converter and calculator designed for learnin
     - handle negative numbers
 - Handle decimal to hexadecimal --COMPLETE--
     - create -dh flag --COMPLETE--
-- Handle binary to decimal
+- Handle binary to decimal --COMPLETE--
+    - create -bd flag --COMPLETE--
 - Handle binary to hexadecimal
 - Handle hexadecimal to decimal
 - Handle hexadecimal to binary
