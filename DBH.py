@@ -8,8 +8,8 @@ parser.add_argument("-bd", "--bin-to-dec", type=str, help="Binary to Decimal Con
 parser.add_argument("-bh", "--bin-to-hex", type=str,help="Binary to Hexadecimal Converter")
 parser.add_argument("-hd", "--hex-to-dec", type=str, help="Hexidecimal to Decimal Converter")
 parser.add_argument("-hb","--hex-to-bin", type=str, help="Hexadecimal to Binary Converter")
-parser.add_argument("-ct", "--conversion-table", action="store_true", help="Prints table of all number conversion between hex, bin, and dec")
-parser.add_argument("-t","--table", action="store_true", help="Prints table of the number conversion" )
+parser.add_argument("-ct", "--conversion-table", action="store_true", help="Prints table of all base number conversion between hex, bin, and dec")
+parser.add_argument("-t","--table", action="store_true", help="Prints table of requested number conversion" )
 
 # Constants
 BINARY = "bin"
