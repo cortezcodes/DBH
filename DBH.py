@@ -5,6 +5,8 @@ parser = argparse.ArgumentParser(description="Learning tool for Number conversio
 parser.add_argument("-db", "--dec-to-bin", type=int, help="Decimal to Binary Converter")
 parser.add_argument("-dh", "--dec-to-hex", type=int, help="Decimal to Hexadecimal Converter")
 parser.add_argument("-bd", "--bin-to-dec", type=str, help="Binary to Decimal Converter")
+parser.add_argument("-bh", "--bin-to-hex", type=str,help="Binary to Hexadecimal Converter")
+parser.add_argument("hd", "hex-to-dec", type=str, help="Hexidecimal to Decimal Converter")
 parser.add_argument("-t","--table", action="store_true", help="Prints table of the number conversion" )
 
 # Constants
@@ -36,6 +38,14 @@ def binary_to_decimal(bin_str: str, create_table:bool=False):
     print(F"\nBinary {bin_str} to decimal: {int(bin_str, base=2)}")
     if create_table:
         table_generator(bin_str, type=BINARY, to_type=DECIMAL)
+
+def binary_to_hexadecimal(bin_str: str, create_table:bool=False):
+    '''
+    Converts binary to hexadecimal
+    '''
+    print(f"Binary {bin_str} to Hexadecimal: {hex(int(bin_str,2))}")
+    if create_table:
+        table_generator(bin_str, type=BINARY, to_type=HEXADECIMAL)
 
 def table_generator(value: str, type:str, to_type:str):
     '''
@@ -74,6 +84,16 @@ def table_generator(value: str, type:str, to_type:str):
                 total = total + sum
                 step += 1
             table.add_row(["--","--","Total", total])
+        if to_type == HEXADECIMAL:
+            table.field_names = ["step", "4-bits", "Decimal", "hex"]
+            step: int = 1
+            while len(value) % 4 != 0:
+                value = '0' + value
+            for i in range(len(value),0, -4):
+                bits = value[i-4:i]
+                dec = int(bits, 2)
+                table.add_row([step, bits, int(bits,2), hex(dec)[2:]])
+                step = step + 1
            
         
              
@@ -81,13 +101,14 @@ def table_generator(value: str, type:str, to_type:str):
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    print(args)
     if args.dec_to_bin:
         decimal_to_binary(args.dec_to_bin, args.table)
     if args.dec_to_hex:
         decimal_to_hexadecimal(args.dec_to_hex, args.table)
     if args.bin_to_dec:
         binary_to_decimal(args.bin_to_dec, args.table)
+    if args.bin_to_hex:
+        binary_to_hexadecimal(args.bin_to_hex, args.table)
 
     
     

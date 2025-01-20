@@ -8,9 +8,10 @@ A Decimal, Binary, and Hexadecimal converter and calculator designed for learnin
     - create -dh flag --COMPLETE--
 - Handle binary to decimal --COMPLETE--
     - create -bd flag --COMPLETE--
-- Handle binary to hexadecimal
+- Handle binary to hexadecimal --COMPLETE--
+    - create -bh flag --COMPLETE--
 - Handle hexadecimal to decimal
 - Handle hexadecimal to binary
-- Create Math table showing the conversion of the number
-    - Create -t flag
+- Create table showing the conversion of the number
+    - Create -t flag --COMPLETE--
 - Create table to show the different values for hex 1 - 15
