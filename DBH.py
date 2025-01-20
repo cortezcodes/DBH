@@ -55,9 +55,20 @@ def hexadecimal_to_decimal(hex_str: str, create_table:bool=False):
     if hex_str[0:2] != "0x":
         print("Hex must begin with 0x")
         return
-    print(f"Hexadecimal {hex_str} to decimal: {int(hex_str,16)}")
+    print(f"\nHexadecimal {hex_str} to decimal: {int(hex_str,16)}")
     if create_table:
         table_generator(hex_str, type=HEXADECIMAL, to_type=DECIMAL)
+
+def hexadecimal_to_binary(hex_str: str, create_table:bool=False):
+    '''
+    Converts hex to binary
+    '''
+    if hex_str[0:2] != "0x":
+        print("Hex must begin with 0x")
+        return
+    print(f"\nHexadecimal {hex_str} to Binary: {bin(int(hex_str,16))[2:]}")
+    if create_table:
+        table_generator(hex_str, type=HEXADECIMAL, to_type=BINARY)
 
 def table_generator(value: str, type:str, to_type:str):
     '''
@@ -120,7 +131,15 @@ def table_generator(value: str, type:str, to_type:str):
                 table.add_row([step, hex_pos, hex, decimal_val])
                 step += 1        
             table.add_row(["","", "Total", total ])
-             
+        if to_type == BINARY:
+            table.field_names = ["Step", "Hex", "Binary"]
+            step = 1
+            modified_value = value[2:]
+            for x  in range(len(modified_value)):
+                hex = modified_value[len(modified_value)-x-1]
+                bin_val = bin(int(hex, 16))[2:]
+                table.add_row([step, hex, bin_val])
+                step += 1   
     print(f"{table}\n")
 
 if __name__ == "__main__":
@@ -135,6 +154,8 @@ if __name__ == "__main__":
         binary_to_hexadecimal(args.bin_to_hex, args.table)
     if args.hex_to_dec:
         hexadecimal_to_decimal(args.hex_to_dec, args.table)
+    if args.hex_to_bin:
+        hexadecimal_to_binary(args.hex_to_bin, args.table)
 
     
     
