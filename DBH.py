@@ -8,6 +8,7 @@ parser.add_argument("-bd", "--bin-to-dec", type=str, help="Binary to Decimal Con
 parser.add_argument("-bh", "--bin-to-hex", type=str,help="Binary to Hexadecimal Converter")
 parser.add_argument("-hd", "--hex-to-dec", type=str, help="Hexidecimal to Decimal Converter")
 parser.add_argument("-hb","--hex-to-bin", type=str, help="Hexadecimal to Binary Converter")
+parser.add_argument("-ct", "--conversion-table", action="store_true", help="Prints table of all number conversion between hex, bin, and dec")
 parser.add_argument("-t","--table", action="store_true", help="Prints table of the number conversion" )
 
 # Constants
@@ -142,6 +143,20 @@ def table_generator(value: str, type:str, to_type:str):
                 step += 1   
     print(f"{table}\n")
 
+def conversion_table():
+    '''
+    Creates a table of all base conversion values between Hex, Binary, and Decimal
+    '''
+    table = PrettyTable()
+    table.field_names = ["Decimal", "Binary", "Hexadecimal"]
+    for x in range(1, 16):
+        bin_value = bin(x)[2:]
+        missing_zero = 4 - len(bin_value)
+        bin_value = '0'*(missing_zero) + bin_value
+        table.add_row([x, bin_value, hex(x)[2:]])
+    
+    print(table)
+        
 if __name__ == "__main__":
     args = parser.parse_args()
     if args.dec_to_bin:
@@ -156,6 +171,7 @@ if __name__ == "__main__":
         hexadecimal_to_decimal(args.hex_to_dec, args.table)
     if args.hex_to_bin:
         hexadecimal_to_binary(args.hex_to_bin, args.table)
-
+    if args.conversion_table:
+        conversion_table()
     
     
