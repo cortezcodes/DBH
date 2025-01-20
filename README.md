@@ -3,9 +3,9 @@ A Decimal, Binary, and Hexadecimal converter and calculator designed for learnin
 behind the conversion. 
 
 ## Requirements:
-Python3
-pip
-virtualenv
+- Python3
+- pip
+- virtualenv
 
 ## Installation:
 1. Create a virtualenv:
