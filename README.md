@@ -7,7 +7,7 @@ usage: DBH.py [-h] [-db DEC_TO_BIN] [-dh DEC_TO_HEX] [-bd BIN_TO_DEC] [-bh BIN_T
 Learning tool for Number conversion
 
 options:
-  -h, --help            show this help message and exit
+  -h, --help            show this help message and exit 
   -db DEC_TO_BIN, --dec-to-bin DEC_TO_BIN
                         Decimal to Binary Converter
   -dh DEC_TO_HEX, --dec-to-hex DEC_TO_HEX
